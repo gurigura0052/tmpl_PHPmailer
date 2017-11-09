@@ -16,21 +16,22 @@ var send = {
           params.append (key, requestData[key]);
         }
         
-        axios.post(requestUrl, params)
-        // 通信が成功した場合
-        .then(function (response) {
-          if (response.data.status == 'success') { // 2通とも送信できた場合
-            alert('送信しました');
-          } else if (response.data.status == 'error'){ // 送信に失敗した場合
-            alert('送信に失敗しました。入力を確認してください');
-          } else { // statusが返ってこなかった場合
-            alert('エラー');
-          }
-        })
-        // 通信に失敗した場合
-        .catch(function (error) {
-          alert('送信できません。入力を確認してください');
-        });
+        axios
+          .post(requestUrl, params)
+          // 通信が成功した場合
+          .then(function (response) {
+            if (response.data.status == 'success') { // 2通とも送信できた場合
+              alert('送信しました');
+            } else if (response.data.status == 'error'){ // 送信に失敗した場合
+              alert('送信に失敗しました。入力を確認してください');
+            } else { // statusが返ってこなかった場合
+              alert('エラー');
+            }
+          })
+          // 通信に失敗した場合
+          .catch(function (error) {
+            alert('送信できません。入力を確認してください');
+          });
         
       } else { // フォームの入力が正しくない場合
         alert('入力を確認してください');
