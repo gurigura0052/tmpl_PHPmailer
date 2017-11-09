@@ -1,0 +1,14 @@
+.form_label{
+  display: inline-block;
+  width: 100px;
+}
+.form_input{
+  width: 300px;
+}
+.borderRed{
+  border-color: red;
+}
+.form_required{
+  color: red;
+  font-size: 70%;
+}

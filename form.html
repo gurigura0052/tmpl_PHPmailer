@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <form id="form" method="post">
+      <p>
+        <label class="form_label">名前 <span class="form_required">必須</span></label>：
+        <!-- 入力内容をaddform.nameに格納し、nameValid（エラーメッセージ）があればborderRedクラスをつける -->
+        <input v-model="addForm.name" v-bind:class="{ borderRed: nameValid }" class="form_input" required>
+      </p>
+      <p>
+        <!-- addForm.nameで入力内容を表示。入力内容とエラーメッセージの両方があれば：を表示。 -->
+        {{ addForm.name }}<span v-if="addForm.name && errorMessage.name">：</span>
+        <!-- エラーメッセージの表示 -->
+        {{ errorMessage.name }}
+      </p>
+
+      <p>
+        <label class="form_label">電話番号 <span class="form_required">必須</span></label>：
+        <input v-model="addForm.tel" v-bind:class="{ borderRed: telValid }" type="tel" class="form_input" required>
+      </p>
+      <p>
+        {{ addForm.tel }}<span v-if="addForm.tel && errorMessage.tel">：</span>
+        {{ errorMessage.tel }}
+      </p>
+
+      <p>
+        <label class="form_label">メール <span class="form_required">必須</span></label>：
+        <input v-model="addForm.mail" v-bind:class="{ borderRed: mailValid }" type="email" class="form_input" required>
+      </p>
+      <p>
+        {{ addForm.mail }}<span v-if="addForm.mail && errorMessage.mail">：</span>
+        {{ errorMessage.mail }}
+      </p>
+      
+      <p>
+        <label class="form_label">本文</label>：
+        <textarea v-model="addForm.text" class="form_input"></textarea>
+      </p>
+      <p>{{ addForm.text }}</p>
+      
+      <!-- クリックするとsendメソッドが発動。preventでページ遷移しない -->
+      <button type="submit" v-on:click.prevent="send">送信</button>
+    </form>
+    
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/lib/vue.js" type="text/javascript"></script>
+    <script src="js/form.js" type="text/javascript"></script>
+  </body>
+</html>
